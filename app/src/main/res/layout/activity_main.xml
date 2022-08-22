@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        tools:context=".MainActivity">
+
+        <EditText
+            android:id="@+id/edtNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="Todo"
+            android:hint="@string/enter_a_number"
+            android:inputType="number"
+            android:minWidth="46dp"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textColorHint="#757575" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:id="@+id/btnAdd"
+            android:text="ADD"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_margin="15dp"
+            android:padding="10dp"
+            android:id="@+id/txtResult"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</layout>
+
