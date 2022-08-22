@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="myViewModel"
+            type="com.gwabs.viewmodelchallnge.MainViewModel" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -19,12 +25,14 @@
             android:minWidth="46dp"
             android:minHeight="48dp"
             android:padding="10dp"
+            android:text="@={myViewModel.input}"
             android:textColorHint="#757575" />
 
         <Button
             android:layout_width="wrap_content"
             android:id="@+id/btnAdd"
             android:text="ADD"
+            android:onClick="@{()->myViewModel.add()}"
             android:layout_gravity="center"
             android:layout_margin="15dp"
             android:layout_height="wrap_content"/>
@@ -33,6 +41,7 @@
             android:layout_width="match_parent"
             android:layout_margin="15dp"
             android:padding="10dp"
+            android:text="@{String.valueOf(myViewModel.total)}"
             android:id="@+id/txtResult"
             android:textColor="@color/black"
             android:textAlignment="center"

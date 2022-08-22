@@ -19,29 +19,12 @@ class MainActivity : AppCompatActivity() {
 
         // initialize binding object
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
         // initialize viewModelFactory and assign the startingNumber
         viewModelFactory = ViewModelFactory(10)
-
         // initialize viewModel object
         viewModel = ViewModelProvider(this,viewModelFactory).get(MainViewModel::class.java)
-
-        // setting an observer that update the ui when needed
-        viewModel.total.observe(this, Observer { it
-            binding.txtResult.text = it.toString()
-        })
-
-        binding.btnAdd.setOnClickListener {
-            if (TextUtils.isEmpty(binding.edtNumber.text.toString())){
-                binding.edtNumber.setError("enter number")
-            }else {
-                val number: String = binding.edtNumber.text.toString()
-                viewModel.add(number.toInt())
-                binding.edtNumber.text = null
-                //binding.txtResult.text = viewModel.getNumber().toString()
-
-            }
-        }
+        binding.lifecycleOwner = this
+        binding.myViewModel = viewModel
 
     }
 }
