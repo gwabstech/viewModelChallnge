@@ -1,10 +1,10 @@
 package com.gwabs.viewmodelchallnge
 
-import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.gwabs.viewmodelchallnge.databinding.ActivityMainBinding
 
@@ -26,7 +26,11 @@ class MainActivity : AppCompatActivity() {
         // initialize viewModel object
         viewModel = ViewModelProvider(this,viewModelFactory).get(MainViewModel::class.java)
 
-        binding.txtResult.text = viewModel.getNumber().toString()
+        // setting an observer that update the ui when needed
+        viewModel.total.observe(this, Observer { it
+            binding.txtResult.text = it.toString()
+        })
+
         binding.btnAdd.setOnClickListener {
             if (TextUtils.isEmpty(binding.edtNumber.text.toString())){
                 binding.edtNumber.setError("enter number")
@@ -34,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 val number: String = binding.edtNumber.text.toString()
                 viewModel.add(number.toInt())
                 binding.edtNumber.text = null
-                binding.txtResult.text = viewModel.getNumber().toString()
+                //binding.txtResult.text = viewModel.getNumber().toString()
 
             }
         }
